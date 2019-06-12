@@ -7,9 +7,9 @@ import tensorflow as tf
 import cv2
 cap = cv2.VideoCapture(0)
 
-MODEL = './trained_model/frozen_inference_graph.pb'
-LABELS = './trained_model/label_map.pbtxt'
-NUM_CLASSES = 2
+MODEL = './trained_model/open_hand/frozen_inference_graph.pb'
+LABELS = './trained_model/open_hand/label_map.pbtxt'
+NUM_CLASSES = 1
 
 # Load Tensorflow model
 detection_graph = tf.Graph()

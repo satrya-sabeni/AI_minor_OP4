@@ -1,0 +1,5 @@
+item {
+  name: "open_hand"
+  id: 1
+  display_name: "openhand"
+}
