@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>589c867864b351149f22a845.png</filename>
+    <size>
+        <width>512</width>
+        <height>288</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>295</xmin>
+            <ymin>114</ymin>
+            <xmax>397</xmax>
+            <ymax>222</ymax>
+        </bndbox>
+    </object>
+</annotation>

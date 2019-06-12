@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>25100787-handsome-male-manager-waving-to-his-colleague.jpg</filename>
+    <size>
+        <width>865</width>
+        <height>1300</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>436</xmin>
+            <ymin>17</ymin>
+            <xmax>748</xmax>
+            <ymax>302</ymax>
+        </bndbox>
+    </object>
+</annotation>

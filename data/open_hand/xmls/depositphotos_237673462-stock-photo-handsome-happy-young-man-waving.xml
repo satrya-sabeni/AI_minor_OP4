@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>depositphotos_237673462-stock-photo-handsome-happy-young-man-waving.jpg</filename>
+    <size>
+        <width>1068</width>
+        <height>1700</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>674</xmin>
+            <ymin>256</ymin>
+            <xmax>893</xmax>
+            <ymax>502</ymax>
+        </bndbox>
+    </object>
+</annotation>

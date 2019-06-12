@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>oath.jpg</filename>
+    <size>
+        <width>380</width>
+        <height>250</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>80</xmin>
+            <ymin>12</ymin>
+            <xmax>166</xmax>
+            <ymax>152</ymax>
+        </bndbox>
+    </object>
+</annotation>

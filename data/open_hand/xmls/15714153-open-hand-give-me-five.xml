@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>15714153-open-hand-give-me-five.jpg</filename>
+    <size>
+        <width>968</width>
+        <height>1300</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>183</xmin>
+            <ymin>237</ymin>
+            <xmax>877</xmax>
+            <ymax>975</ymax>
+        </bndbox>
+    </object>
+</annotation>

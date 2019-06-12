@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>WomanTakingOath_618x355.jpg</filename>
+    <size>
+        <width>618</width>
+        <height>355</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>108</xmin>
+            <ymin>84</ymin>
+            <xmax>231</xmax>
+            <ymax>248</ymax>
+        </bndbox>
+    </object>
+</annotation>

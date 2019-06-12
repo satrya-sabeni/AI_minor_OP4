@@ -53,7 +53,7 @@ with detection_graph.as_default():
                 np.squeeze(scores),
                 categories_index,
                 use_normalized_coordinates=True,
-                min_score_thresh=0.70,
+                min_score_thresh=0.65,
                 line_thickness=8)
 
             cv2.imshow('object detection', cv2.resize(image_np, (800, 600)))

@@ -1,0 +1,36 @@
+<annotation>
+    <folder>images</folder>
+    <filename>prince-william-kate-middleton-waving-new-t.jpg</filename>
+    <size>
+        <width>820</width>
+        <height>492</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>61</xmin>
+            <ymin>213</ymin>
+            <xmax>193</xmax>
+            <ymax>361</ymax>
+        </bndbox>
+    </object>
+    <object>
+        <name>open_hand</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>597</xmin>
+            <ymin>62</ymin>
+            <xmax>734</xmax>
+            <ymax>212</ymax>
+        </bndbox>
+    </object>
+</annotation>
