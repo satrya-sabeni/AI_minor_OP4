@@ -16,9 +16,9 @@ from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
 flags = tf.app.flags
-flags.DEFINE_string('data_dir', 'tf_records/school/', 'Root directory to raw pet dataset.')
-flags.DEFINE_string('output_dir', 'tf_records/school/output/', 'Path to directory to output TFRecords.')
-flags.DEFINE_string('label_map_path', 'tf_records/school/label_map.pbtxt',
+flags.DEFINE_string('data_dir', '../data/open_hand/', 'Root directory to raw pet dataset.')
+flags.DEFINE_string('output_dir', '../data/open_hand/tf_records/', 'Path to directory to output TFRecords.')
+flags.DEFINE_string('label_map_path', '../data/open_hand/label_map.pbtxt',
                     'Path to label map proto')
 flags.DEFINE_boolean('faces_only', True, 'If True, generates bounding boxes '
                      'for pet faces.  Otherwise generates bounding boxes (as '
@@ -26,7 +26,7 @@ flags.DEFINE_boolean('faces_only', True, 'If True, generates bounding boxes '
                      'in the latter case, the resulting files are much larger.')
 flags.DEFINE_string('mask_type', 'png', 'How to represent instance '
                     'segmentation masks. Options are "png" or "numerical".')
-flags.DEFINE_integer('num_shards', 1, 'Number of TFRecord shards')
+flags.DEFINE_integer('num_shards', 5, 'Number of TFRecord shards')
 
 FLAGS = flags.FLAGS
 
