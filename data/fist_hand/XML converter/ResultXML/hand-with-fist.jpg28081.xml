@@ -1,0 +1,55 @@
+<filename>
+	hand-with-fist.jpg
+</filename>
+<size>
+	28081
+</size>
+<regions>
+	<shape_attributes>
+		<name>
+			rect
+		</name>
+		<x>
+			178
+		</x>
+		<y>
+			51
+		</y>
+		<width>
+			304
+		</width>
+		<height>
+			193
+		</height>
+	</shape_attributes>
+	<region_attributes>
+		<name>
+			fist_hand
+		</name>
+		<type>
+			unknown
+		</type>
+		<image_quality>
+			<good>
+				True
+			</good>
+			<frontal>
+				True
+			</frontal>
+			<good_illumination>
+				True
+			</good_illumination>
+		</image_quality>
+	</region_attributes>
+</regions>
+<file_attributes>
+	<caption>
+		
+	</caption>
+	<public_domain>
+		no
+	</public_domain>
+	<image_url>
+		
+	</image_url>
+</file_attributes>

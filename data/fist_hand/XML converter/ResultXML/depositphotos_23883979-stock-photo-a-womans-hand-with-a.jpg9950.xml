@@ -1,0 +1,55 @@
+<filename>
+	depositphotos_23883979-stock-photo-a-womans-hand-with-a.jpg
+</filename>
+<size>
+	9950
+</size>
+<regions>
+	<shape_attributes>
+		<name>
+			rect
+		</name>
+		<x>
+			41
+		</x>
+		<y>
+			32
+		</y>
+		<width>
+			239
+		</width>
+		<height>
+			200
+		</height>
+	</shape_attributes>
+	<region_attributes>
+		<name>
+			fist_hand
+		</name>
+		<type>
+			unknown
+		</type>
+		<image_quality>
+			<good>
+				True
+			</good>
+			<frontal>
+				True
+			</frontal>
+			<good_illumination>
+				True
+			</good_illumination>
+		</image_quality>
+	</region_attributes>
+</regions>
+<file_attributes>
+	<caption>
+		
+	</caption>
+	<public_domain>
+		no
+	</public_domain>
+	<image_url>
+		
+	</image_url>
+</file_attributes>

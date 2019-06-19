@@ -1,0 +1,55 @@
+<filename>
+	2-800x800.jpg
+</filename>
+<size>
+	30258
+</size>
+<regions>
+	<shape_attributes>
+		<name>
+			rect
+		</name>
+		<x>
+			126
+		</x>
+		<y>
+			66
+		</y>
+		<width>
+			598
+		</width>
+		<height>
+			522
+		</height>
+	</shape_attributes>
+	<region_attributes>
+		<name>
+			fist_hand
+		</name>
+		<type>
+			unknown
+		</type>
+		<image_quality>
+			<good>
+				True
+			</good>
+			<frontal>
+				True
+			</frontal>
+			<good_illumination>
+				True
+			</good_illumination>
+		</image_quality>
+	</region_attributes>
+</regions>
+<file_attributes>
+	<caption>
+		
+	</caption>
+	<public_domain>
+		no
+	</public_domain>
+	<image_url>
+		
+	</image_url>
+</file_attributes>

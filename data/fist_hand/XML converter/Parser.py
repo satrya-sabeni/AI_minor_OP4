@@ -1,7 +1,8 @@
 import json
 import xml.etree.cElementTree as ET
+import os
 
-def json2xml(json_obj, line_padding=""):
+def json2xml(json_obj, line_padding = ""):
     result_list = list()
 
     json_obj_type = type(json_obj)
@@ -23,15 +24,19 @@ def json2xml(json_obj, line_padding=""):
 
     return "%s%s" % (line_padding, json_obj)
 
+
 def GetJSON():
-    path = "../../JSON/via_project_12Jun2019_15h22m.json"
-    file = open(path, "rb").read();
+    path = "../JSON/via_project_12Jun2019_15h22m.json"
+    file = open(path, "rb").read(); 
     return file
 
-def Format(json):
-    
+def Format():
+    js = json.loads(GetJSON())
+    for k, v in js['_via_img_metadata'].items():
 
-a = json2xml(json.loads(GetJSON()))
-f = open("ResultXML.xml", "w+")
-f.write(str(a))
+        xml = json2xml(v)
+        filename ="ResultXML/" + k+".xml"
+        f = open(filename, "w+")
+        f.write(str(xml))
 
+Format()
