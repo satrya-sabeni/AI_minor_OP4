@@ -56,6 +56,12 @@ with detection_graph.as_default():
                 min_score_thresh=0.65,
                 line_thickness=8)
 
+            for c, score in zip(classes[0], scores[0]):
+                    if(score > 0.65):
+                    print(int(c), ':', score)
+                    print(categories[int(c) - 1]['name'])
+                    print(boxes[0][0])
+                    
             cv2.imshow('object detection', cv2.resize(image_np, (800, 600)))
             if cv2.waitKey(25) & 0xFF == ord('q'):
                 cv2.destroyAllWindows()
