@@ -4,3 +4,5 @@ tensorflow_api/object_detection/core/
 tensorflow_api/object_detection/protos/
 tensorflow_api/object_detection/utils/
 tensorflow_api/.ipynb_checkpoints/
+tensorflow_api/object_detection/__pycache__/
+tensorflow_api/trained_model/
