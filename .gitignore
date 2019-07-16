@@ -1,1 +1,5 @@
 tensorflow_api/build_models/
+object_detection/core/
+object_detection/protos/
+object_detection/utils/
+.ipynb_checkpoints/
