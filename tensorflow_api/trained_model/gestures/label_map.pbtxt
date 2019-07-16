@@ -1,0 +1,12 @@
+item {
+  name: "open_hand"
+  id: 1
+}
+item {
+  name: "fist"
+  id: 2
+}
+item {
+  name: "finger"
+  id: 3
+}
