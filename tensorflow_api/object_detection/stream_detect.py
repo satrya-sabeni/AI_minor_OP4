@@ -7,8 +7,8 @@ import tensorflow as tf
 import cv2
 cap = cv2.VideoCapture(0)
 
-MODEL = './trained_model/open_hand/frozen_inference_graph_v2.pb'
-LABELS = './trained_model/open_hand/label_map.pbtxt'
+MODEL = 'build_models/test17/export/frozen_inference_graph.pb'
+LABELS = 'build_models/test17/label_map_2.pbtxt'
 NUM_CLASSES = 1
 
 # Load Tensorflow model
@@ -53,7 +53,7 @@ with detection_graph.as_default():
                 np.squeeze(scores),
                 categories_index,
                 use_normalized_coordinates=True,
-                min_score_thresh=0.65,
+                min_score_thresh=0.4,
                 line_thickness=8)
 
             cv2.imshow('object detection', cv2.resize(image_np, (800, 600)))

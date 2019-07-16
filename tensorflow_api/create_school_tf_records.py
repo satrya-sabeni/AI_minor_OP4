@@ -15,10 +15,14 @@ from object_detection.dataset_tools import tf_record_creation_util
 from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
+'''
+python create_school_tf_records.py
+'''
+
 flags = tf.app.flags
-flags.DEFINE_string('data_dir', '../data/open_hand/', 'Root directory to raw pet dataset.')
-flags.DEFINE_string('output_dir', '../data/open_hand/tf_records/', 'Path to directory to output TFRecords.')
-flags.DEFINE_string('label_map_path', '../data/open_hand/label_map.pbtxt',
+flags.DEFINE_string('data_dir', '../data/gestures/', 'Root directory to raw pet dataset.')
+flags.DEFINE_string('output_dir', '../data/gestures/tf_records/', 'Path to directory to output TFRecords.')
+flags.DEFINE_string('label_map_path', '../data/gestures/label_map.pbtxt',
                     'Path to label map proto')
 flags.DEFINE_boolean('faces_only', True, 'If True, generates bounding boxes '
                      'for pet faces.  Otherwise generates bounding boxes (as '
@@ -232,51 +236,62 @@ def create_tf_record(output_filename,
 
 # TODO(derekjchow): Add test for pet/PASCAL main files.
 def main(_):
-  data_dir = FLAGS.data_dir
-  label_map_dict = label_map_util.get_label_map_dict(FLAGS.label_map_path)
+    data_dir = FLAGS.data_dir
+    label_map_dict = label_map_util.get_label_map_dict(FLAGS.label_map_path)
 
-  logging.info('Reading from Dataset.')
-  image_dir = os.path.join(data_dir, 'images')
-  annotations_dir = os.path.join(data_dir, 'xmls')
-  examples_path = os.path.join(annotations_dir, 'trainval.txt')
-  examples_list = dataset_util.read_examples_list(examples_path)
+    logging.info('Reading from Dataset.')
+    image_dir = os.path.join(data_dir, 'images')
+    annotations_dir = os.path.join(data_dir, 'xmls')
+    # examples_path = os.path.join(annotations_dir, 'trainval.txt')
+    # examples_list = dataset_util.read_examples_list(examples_path) #original
+    # gestures = ['fist_hand', 'open_hand', 'finger_hand']
+    gestures = ['gestures']
+    examples_list = []
+    for gesture in gestures:
+        raw_image_list = next(os.walk('../data/'+gesture+'/images'))[2]
+        for i in raw_image_list:
+            o = i.split('.')[0]
+            examples_list.append(o)
+    print(examples_list)
+    print(len(examples_list))
 
-  # Test images are not included in the downloaded data set, so we shall perform
-  # our own split.
-  random.seed(42)
-  random.shuffle(examples_list)
-  num_examples = len(examples_list)
-  num_train = int(0.85 * num_examples)
-  train_examples = examples_list[:num_train]
-  val_examples = examples_list[num_train:]
-  logging.info('%d training and %d validation examples.',
-               len(train_examples), len(val_examples))
+    # Test images are not included in the downloaded data set, so we shall perform
+    # our own split.
+    random.seed(42)
+    random.shuffle(examples_list)
+    num_examples = len(examples_list)
+    num_train = int(0.85 * num_examples)
+    train_examples = examples_list[:num_train]
+    val_examples = examples_list[num_train:]
+    logging.info('%d training and %d validation examples.',
+                  len(train_examples), len(val_examples))
 
-  train_output_path = os.path.join(FLAGS.output_dir, 'train.record')
-  val_output_path = os.path.join(FLAGS.output_dir, 'val.record')
-  if not FLAGS.faces_only:
-    train_output_path = os.path.join(FLAGS.output_dir,
-                                     'pets_fullbody_with_masks_train.record')
-    val_output_path = os.path.join(FLAGS.output_dir,
-                                   'pets_fullbody_with_masks_val.record')
-  create_tf_record(
-      train_output_path,
-      FLAGS.num_shards,
-      label_map_dict,
-      annotations_dir,
-      image_dir,
-      train_examples,
-      faces_only=FLAGS.faces_only,
-      mask_type=FLAGS.mask_type)
-  create_tf_record(
-      val_output_path,
-      FLAGS.num_shards,
-      label_map_dict,
-      annotations_dir,
-      image_dir,
-      val_examples,
-      faces_only=FLAGS.faces_only,
-      mask_type=FLAGS.mask_type)
+    train_output_path = os.path.join(FLAGS.output_dir, 'train-'+gestures[0]+'.record')
+    val_output_path = os.path.join(FLAGS.output_dir, 'val-'+gestures[0]+'.record')
+    if not FLAGS.faces_only:
+      train_output_path = os.path.join(FLAGS.output_dir,
+                                        'pets_fullbody_with_masks_train.record')
+      val_output_path = os.path.join(FLAGS.output_dir,
+                                      'pets_fullbody_with_masks_val.record')
+    
+    create_tf_record(
+        train_output_path,
+        FLAGS.num_shards,
+        label_map_dict,
+        annotations_dir,
+        image_dir,
+        train_examples,
+        faces_only=FLAGS.faces_only,
+        mask_type=FLAGS.mask_type)
+    create_tf_record(
+        val_output_path,
+        FLAGS.num_shards,
+        label_map_dict,
+        annotations_dir,
+        image_dir,
+        val_examples,
+        faces_only=FLAGS.faces_only,
+        mask_type=FLAGS.mask_type)
 
 
 if __name__ == '__main__':

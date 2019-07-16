@@ -62,6 +62,12 @@ python object_detection/export_inference_graph.py \
     --trained_checkpoint_prefix ./build_models/open_hand/model.ckpt-8000 \
     --output_directory ./build_models/open_hand/export_2/
 
+python object_detection/export_inference_graph.py \
+    --input_type image_tensor \
+    --pipeline_config_path build_models/test17/ssd_inception_v2_coco.config \
+    --trained_checkpoint_prefix build_models/test17/model.ckpt-15000 \
+    --output_directory build_models/test17/export_2/
+
 The expected output would be in the directory
 path/to/exported_model_directory (which is created if it does not exist)
 with contents:
