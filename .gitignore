@@ -1,2 +1,6 @@
 tensorflow_api/build_models/
 data/*
+tensorflow_api/object_detection/core/
+tensorflow_api/object_detection/protos/
+tensorflow_api/object_detection/utils/
+tensorflow_api/.ipynb_checkpoints/
