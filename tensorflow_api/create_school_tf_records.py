@@ -16,29 +16,18 @@ from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
 flags = tf.app.flags
-flags.DEFINE_string('data_dir', '../data/open_hand/', 'Root directory to raw pet dataset.')
-flags.DEFINE_string('output_dir', '../data/open_hand/tf_records/', 'Path to directory to output TFRecords.')
+flags.DEFINE_string('data_dir', '../data/open_hand/')
+flags.DEFINE_string('output_dir', '../data/open_hand/tf_records/')
 flags.DEFINE_string('label_map_path', '../data/open_hand/label_map.pbtxt',
                     'Path to label map proto')
-flags.DEFINE_boolean('faces_only', True, 'If True, generates bounding boxes '
-                     'for pet faces.  Otherwise generates bounding boxes (as '
-                     'well as segmentations for full pet bodies).  Note that '
-                     'in the latter case, the resulting files are much larger.')
-flags.DEFINE_string('mask_type', 'png', 'How to represent instance '
-                    'segmentation masks. Options are "png" or "numerical".')
-flags.DEFINE_integer('num_shards', 5, 'Number of TFRecord shards')
+flags.DEFINE_boolean('faces_only', True)
+flags.DEFINE_string('mask_type', 'png')
+flags.DEFINE_integer('num_shards', 5)
 
 FLAGS = flags.FLAGS
 
 
 def get_class_name_from_filename(file_name):
-  """Gets the class name from a file.
-  Args:
-    file_name: The file name to get the class name from.
-               ie. "american_pit_bull_terrier_105.jpg"
-  Returns:
-    A string of the class name.
-  """
   match = re.match(r'([A-Za-z_]+)(_[0-9]+\.jpg)', file_name, re.I)
   return match.groups()[0]
 
@@ -50,27 +39,7 @@ def dict_to_tf_example(data,
                        ignore_difficult_instances=False,
                        faces_only=True,
                        mask_type='png'):
-  """Convert XML derived dict to tf.Example proto.
-  Notice that this function normalizes the bounding box coordinates provided
-  by the raw data.
-  Args:
-    data: dict holding PASCAL XML fields for a single image (obtained by
-      running dataset_util.recursive_parse_xml_to_dict)
-    mask_path: String path to PNG encoded mask.
-    label_map_dict: A map from string label names to integers ids.
-    image_subdirectory: String specifying subdirectory within the
-      Pascal dataset directory holding the actual image data.
-    ignore_difficult_instances: Whether to skip difficult instances in the
-      dataset  (default: False).
-    faces_only: If True, generates bounding boxes for pet faces.  Otherwise
-      generates bounding boxes (as well as segmentations for full pet bodies).
-    mask_type: 'numerical' or 'png'. 'png' is recommended because it leads to
-      smaller file sizes.
-  Returns:
-    example: The converted tf.Example.
-  Raises:
-    ValueError: if the image pointed to by data['filename'] is not a valid JPEG
-  """
+
   img_path = os.path.join(image_subdirectory, data['filename'])
   with tf.gfile.GFile(img_path, 'rb') as fid:
     encoded_jpg = fid.read()
@@ -79,19 +48,6 @@ def dict_to_tf_example(data,
   if image.format != 'JPEG':
     raise ValueError('Image format not JPEG')
   key = hashlib.sha256(encoded_jpg).hexdigest()
-
-  '''with tf.gfile.GFile(mask_path, 'rb') as fid:
-    encoded_mask_png = fid.read()
-  encoded_png_io = io.BytesIO(encoded_mask_png)
-  mask = PIL.Image.open(encoded_png_io)
-  if mask.format != 'PNG':
-    raise ValueError('Mask format not PNG')
-
-  mask_np = np.asarray(mask)
-  nonbackground_indices_x = np.any(mask_np != 2, axis=0)
-  nonbackground_indices_y = np.any(mask_np != 2, axis=1)
-  nonzero_x_indices = np.where(nonbackground_indices_x)
-  nonzero_y_indices = np.where(nonbackground_indices_y)'''
 
   width = int(data['size']['width'])
   height = int(data['size']['height'])
@@ -185,19 +141,7 @@ def create_tf_record(output_filename,
                      examples,
                      faces_only=True,
                      mask_type='png'):
-  """Creates a TFRecord file from examples.
-  Args:
-    output_filename: Path to where output file is saved.
-    num_shards: Number of shards for output file.
-    label_map_dict: The label map dictionary.
-    annotations_dir: Directory where annotation files are stored.
-    image_dir: Directory where image files are stored.
-    examples: Examples to parse and save to tf record.
-    faces_only: If True, generates bounding boxes for pet faces.  Otherwise
-      generates bounding boxes (as well as segmentations for full pet bodies).
-    mask_type: 'numerical' or 'png'. 'png' is recommended because it leads to
-      smaller file sizes.
-  """
+  
   with contextlib2.ExitStack() as tf_record_close_stack:
     output_tfrecords = tf_record_creation_util.open_sharded_output_tfrecords(
         tf_record_close_stack, output_filename, num_shards)
