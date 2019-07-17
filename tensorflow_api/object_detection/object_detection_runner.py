@@ -21,9 +21,9 @@ from utils import label_map_util
 from multiprocessing.dummy import Pool as ThreadPool
 
 MAX_NUMBER_OF_BOXES = 10
-MINIMUM_CONFIDENCE = 0.6
+MINIMUM_CONFIDENCE = 0.2
 
-PATH_TO_LABELS = 'annotations/label_map.pbtxt'
+PATH_TO_LABELS = 'build_models/test17/label_map.pbtxt'
 PATH_TO_TEST_IMAGES_DIR = 'test_images'
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
@@ -31,7 +31,7 @@ categories = label_map_util.convert_label_map_to_categories(label_map, max_num_c
 CATEGORY_INDEX = label_map_util.create_category_index(categories)
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-MODEL_NAME = 'build_graphs/gebrek_1_20190526/output_inference_graph'
+MODEL_NAME = 'build_models/test17/export_2'
 PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 
 
@@ -64,7 +64,8 @@ def detect_objects(image_path):
     fig.add_axes(ax)
 
     plt.imshow(image_np, aspect = 'auto')
-    plt.savefig('output/{}'.format(image_path), dpi = 300) #org dpi 62
+    fname = image_path.split('/')[1]
+    plt.savefig('output/{}'.format(fname), dpi = 300) #org dpi 62
     plt.close(fig)
 
 
@@ -95,7 +96,7 @@ def detect_objects(image_path):
 
 
 # TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image-{}.jpg'.format(i)) for i in range(1, 4) ]
-TEST_IMAGE_PATHS = glob.glob(os.path.join(PATH_TO_TEST_IMAGES_DIR,'*.JPG'))
+TEST_IMAGE_PATHS = glob.glob(os.path.join(PATH_TO_TEST_IMAGES_DIR,'*.jpg'))
 
 # Load model into memory
 print('Loading model...')
