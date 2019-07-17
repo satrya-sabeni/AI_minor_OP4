@@ -3,3 +3,4 @@ object_detection/core/tensorflow_api/object_detection/core/*
 object_detection/protos/tensorflow_api/object_detection/protos/*
 object_detection/utils/	tensorflow_api/object_detection/utils/*
 .ipynb_checkpoints/
+__pycache__/
